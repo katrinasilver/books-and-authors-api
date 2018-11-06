@@ -1,6 +1,6 @@
 [
   {
-    "id": 1,
+    "id": "1",
     "name": "A Game of Thrones",
     "borrowed": "false",
     "description": "A Game of Thrones is the first novel in A Song of Ice and Fire, a series of fantasy novels by American author George R. R. Martin. It was first published on August 1, 1996. The novel won the 1997 Locus Award and was nominated for both the 1997 Nebula Award and the 1997 World Fantasy Award.",
@@ -9,7 +9,7 @@
     ]
   },
   {
-    "id": 2,
+    "id": "2",
     "name": "A Storm of Swords",
     "borrowed": "false",
     "description": "A Storm of Swords is the third of seven planned novels in A Song of Ice and Fire, a fantasy series by American author George R. R. Martin. It was first published on August 8, 2000, in the United Kingdom with a United States edition following in November 2000. Its publication was preceded by a novella called Path of the Dragon, which collects some of the Daenerys Targaryen chapters from the novel into a single book.",
@@ -18,7 +18,7 @@
     ]
   },
   {
-    "id": 3,
+    "id": "3",
     "name": "Stardust",
     "borrowed": "false",
     "description": "Stardust is a novel by British writer Neil Gaiman, usually published with illustrations by Charles Vess. Stardust has a different tone and style from most of Gaiman's prose fiction, being consciously written in the tradition of pre-Tolkien English fantasy, following in the footsteps of authors such as Lord Dunsany and Hope Mirrlees. It is concerned with the adventures of a young man from the village of Wall, which borders the magical land of Faerie.",
@@ -27,7 +27,7 @@
     ]
   },
   {
-    "id": 4,
+    "id": "4",
     "name": "Coraline",
     "borrowed": "false",
     "description": "Coraline is a dark fantasy children's novella by British author Neil Gaiman, published in 2002 by Bloomsbury and Harper Collins. It was awarded the 2003 Hugo Award for Best Novella, the 2003 Nebula Award for Best Novella, and the 2002 Bram Stoker Award for Best Work for Young Readers.",
@@ -36,7 +36,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": "5",
     "name": "Harry Potter and the Half Blood Prince",
     "borrowed": "false",
     "description": "Harry Potter and the Half-Blood Prince is a fantasy novel written by British author J. K. Rowling and the sixth and penultimate novel in the Harry Potter series.",
@@ -45,7 +45,7 @@
     ]
   },
   {
-    "id": 5,
+    "id": "6",
     "name": "Harry Potter and the Deathly Hallows",
     "borrowed": "false",
     "description": "Harry Potter and the Deathly Hallows is a fantasy novel written by British author J. K. Rowling and the seventh and final novel of the Harry Potter series. The book was released on 21 July 2007, ending the series that began in 1997 with the publication of Harry Potter and the Philosopher's Stone.",

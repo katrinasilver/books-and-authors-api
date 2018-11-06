@@ -2,11 +2,10 @@ const model = require('../models/authors')
 
 const getAll = (req, res, next) => {
   const limit = req.query.limit
-  res.status(200).send(`ctrl getAll from model`)
+  const data = model.getAll(limit)
+  res.status(200).send({ data })
 }
 
-const create = (req, res, next) => {
-  res.status(200).send(`ctrl create for model`)
+module.exports = {
+  getAll
 }
-
-module.exports = {}
