@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "first_name": "George",
+    "last_name": "R.R. Martin"
+  },
+  {
+    "id": 2,
+    "first_name": "J.K.",
+    "last_name": "Rowling"
+  },
+  {
+    "id": 3,
+    "first_name": "Neil",
+    "last_name": "Gaiman"
+  }
+]
