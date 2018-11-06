@@ -1,0 +1,20 @@
+{
+  "name": "books-api",
+  "version": "1.0.0",
+  "description": "An API using opinionated architecture and RESTful patterns that stores information about Books and Authors",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon app.js",
+    "start": "node app.js"
+  },
+  "keywords": [],
+  "author": "Katrina Agustin",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.16.4",
+    "morgan": "^1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.6"
+  }
+}
