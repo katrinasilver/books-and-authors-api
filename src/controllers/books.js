@@ -27,8 +27,7 @@ const create = (req, res, next) => {
 }
 
 const edit = (req, res, next) => {
-  model.edit(req.params.id, req.body)
-  let data = req.body
+  let data = model.edit(req.params.id, req.body)
 
   if (data.errors) {
     return next({ status: 400, message: `edit failed`, errors: data.errors })

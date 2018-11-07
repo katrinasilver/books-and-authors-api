@@ -8,7 +8,7 @@ const getOne = (id) => {
   const book = books.find(b => b.id === id)
 
   if (!book) {
-    errors.push(`book id is required`)
+    errors.push(`book id doesn't exist`)
     return { errors }
   }
   return book
@@ -19,52 +19,56 @@ const create = (body) => {
   const { name, borrowed } = body
   let entry
 
-  if (!body.name || !body.borrowed) {
-
-    errors.push(`post body is missing or incorrect. please use "name" and "borrowed" for the keys and both values should be in double quotes like this error message :D`)
+  if (!name) {
+    errors.push(`book name is missing.`)
     entry = { errors }
 
-  } else if (body.name.length > 30) {
+  } else if (name.length > 30) {
     errors.push(`name exceeds 30 characters`)
     entry = { errors }
 
-  } else if (body.borrowed !== "true" && body.borrowed !== "false") {
-
-    errors.push(`borrowed: true or false`)
-    entry = { errors }
+  // } else if (borrowed !== 'true' && borrowed !== 'false') {
+  //   errors.push(`borrowed: use true or false`)
+  //   entry = { errors }
 
   } else {
-
-    let book = { id: uuid(), name, borrowed, authors: [] }
-
-    books.push( book )
+    const book = { id: uuid(), name,  borrowed: 'false', authors: [] }
+    books.push(book)
     entry = book
-
   }
   return entry
 }
 
 const edit = (id, body) => {
   const errors = []
-  const book = books.find(b => b.id === id)
-  const name = body.name
+  const { name, borrowed } = body
+  let book = books.find(b => b.id === id)
+  let index = books.findIndex(b => b.id === id)
+  console.log(book, index)
   let entry
 
-  if (!name || name.length > 30) {
+  if (name) {
 
-    errors.push(`name is missing or exceeds 30 characters`)
-    entry = { errors }
-
-  } else {
-
+    if (name.length > 30) {
+      errors.push(`name is missing or exceeds 30 characters`)
+      entry = { errors }
+    }
     book.name = name
-    books.push(book)
-    entry = name
-
+    books.splice(index, 1, book)
+    entry = book
   }
 
-  return entry
+  if (borrowed) {
 
+    if (borrowed !== "true" && borrowed !== "false") {
+      errors.push(`borrowed: true or false`)
+      entry = { errors }
+    }
+    book.borrowed = borrowed
+    books.splice(index, 1, book)
+    entry = book
+  }
+  return entry
 }
 
 module.exports = {
