@@ -18,24 +18,31 @@ const getOne = (id) => {
 
 const create = (body) => {
   const errors = []
-  // const { id: uuid(), title, borrowed, description, authors: [uuid()] } = body
-
-  // read
-  // parse
-  // write
-  // do your thing
-  // stringify
-  // push
-
+  const { name, borrowed } = body
   let entry
-  if (!entry) {
-    errors.push(`book id is required`)
-    return { errors }
-  } else {
-    books.push( body )
-    entry = body
-  }
 
+  if (!body.name && !body.borrowed) {
+
+    errors.push(`post body is missing or incorrect. please use "name" and "borrowed" for the keys and both values should be in double quotes like this error message :D`)
+    entry = { errors }
+
+  } else if (body.name.length > 30) {
+    errors.push(`name exceeds 30 characters`)
+    entry = { errors }
+
+  } else if (body.borrowed !== "true" && body.borrowed !== "false") {
+
+    errors.push(`borrowed: true or false`)
+    entry = { errors }
+
+  } else {
+
+    let book = { id: uuid(), name, borrowed, authors: [] }
+
+    books.push( book )
+    entry = book
+
+  }
   return entry
 }
 

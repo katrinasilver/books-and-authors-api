@@ -9,24 +9,24 @@ const getAll = (req, res, next) => {
 
 // Get a Book
 const getOne = (req, res, next) => {
-  const result = model.getOne(req.params.id)
+  const data = model.getOne(req.params.id)
 
-  if (result.errors) {
-    return next({ status: 400, message: `Book not found`, errors: result.errors })
+  if (data.errors) {
+    return next({ status: 400, message: `book not found`, errors: data.errors })
   }
 
-  res.status(200).json({ data: result })
+  res.status(200).json({ data })
 }
 
-// Create a book
+// Create a Book
 const create = (req, res, next) => {
-  const result = model.create(req.body)
+  const data = model.create(req.body)
 
-  if (result.errors) {
-    return next({ status: 400, message: `Book not found`, errors: result.errors })
+  if (data.errors) {
+    return next({ status: 400, message: `post error`, errors: data.errors })
   }
 
-  res.status(200).json({ data: result })
+  res.status(201).json({ data })
 }
 
 module.exports = {
