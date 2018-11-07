@@ -20,7 +20,7 @@ const create = (req, res, next) => {
   const data = model.create(req.body)
 
   if (data.errors) {
-    return next({ status: 400, message: `post error`, errors: data.errors })
+    return next({ status: 400, message: `post failed`, errors: data.errors })
   }
 
   res.status(201).json(data)
@@ -40,7 +40,7 @@ const deleteOne = (req, res, next) => {
   let data = model.deleteOne(req.params.id)
 
   if (data.errors) {
-    return next({ status: 400, message: `edit failed`, errors: data.errors })
+    return next({ status: 400, message: `delete failed`, errors: data.errors })
   }
 
   res.status(200).json(data)

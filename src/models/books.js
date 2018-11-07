@@ -1,7 +1,15 @@
 const uuid = require('uuid/v4')
 const books = require('./data/books')
 
-const getAll = (limit) => limit ? books.slice(0, limit) : books
+const getAll = (limit) => {
+  const errors = []
+
+  if (!books.length) {
+    errors.push(`there are no books in the database right now :(`)
+    return { errors }
+  }
+  return limit ? books.slice(0, limit) : books
+}
 
 const getOne = (id) => {
   const errors = []
@@ -16,23 +24,23 @@ const getOne = (id) => {
 
 const create = (body) => {
   const errors = []
-  const { name, borrowed } = body
-  let entry
+  const name = body.name
 
   if (!name) {
     errors.push(`book name is missing.`)
-    entry = { errors }
+    return { errors }
 
   } else if (name.length > 30) {
     errors.push(`name exceeds 30 characters`)
-    entry = { errors }
+    return { errors }
 
   } else {
-    const book = { id: uuid(), name,  borrowed: 'false', authors: [] }
+    const book = {
+      id: uuid(), name, borrowed: 'false', authors: [] }
     books.push(book)
-    entry = book
+    return book
+
   }
-  return entry
 }
 
 const edit = (id, body) => {

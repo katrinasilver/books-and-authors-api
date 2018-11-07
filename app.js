@@ -8,7 +8,9 @@ if (process.env.NODE_ENV === 'development') app.use(morgan('dev'))
 
 // Get Routes
 const booksRoutes = require('./src/routes/books')
+const authorRoutes = require('./src/routes/authors')
 app.use('/books', booksRoutes)
+app.use('/books/:id', authorRoutes)
 
 // Custom Errors
 app.use((err, req, res, next) => {

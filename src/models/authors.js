@@ -1,27 +1,33 @@
 const uuid = require('uuid/v4')
 const authors = require('./data/authors')
 
-// Get All Authors
-const getAll = (limit) => limit ? authors.slice(0, limit) : authors
+const getAuthor = (id) => {
+  const errors = []
+  const author = authors.find(b => b.id === id)
 
-// Create Author
-// const create = (body) => {
-//   const errors = []
-//   const name = body.name
+  if (!author) {
+    errors.push(`author id doesn't exist`)
+    return { errors }
+  }
+  return author
+}
 
-//   let response
-//   if (!name) {
-//     errors.push(`Name is required`)
-//     response = { errors }
-//   } else {
-//     let author = { id: uuid(), name }
-//     authors.push(author)
-//     response = author
-//   }
+const create = (body) => {
+  const errors = []
+  const { first_name, last_name } = body
 
-//   return response
-// }
+  if (!body) {
+    errors.push(`author must have full name`)
+    return { errors }
+  } else {
+    let author = {
+      id: uuid(), first_name, last_name
+    }
+    authors.push(author)
+    return author
+  }
+}
 
 module.exports = {
-  getAll
+  create, getAuthor
 }

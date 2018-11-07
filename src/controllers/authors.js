@@ -1,11 +1,25 @@
 const model = require('../models/authors')
 
-const getAll = (req, res, next) => {
-  const limit = req.query.limit
-  const data = model.getAll(limit)
-  res.status(200).send({ data })
+const getAuthor = (req, res, next) => {
+  const data = model.getAuthor(req.params.id)
+
+  if (data.errors) {
+    return next({ status: 400, message: `author not found`, errors: data.errors })
+  }
+
+  res.status(200).json(data)
+}
+
+const create = (req, res, next) => {
+  const data = model.create(req.body)
+
+  if (data.errors) {
+    return next({ status: 400, message: `post failed`, errors: data.errors })
+  }
+
+  res.status(201).json(data)
 }
 
 module.exports = {
-  getAll
+  create, getAuthor
 }
