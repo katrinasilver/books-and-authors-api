@@ -7,5 +7,6 @@ router.post('/', ctrl.create)
 
 router.get('/:id', ctrl.getOne)
 router.patch('/:id', ctrl.edit)
+router.delete('/:id', ctrl.deleteOne)
 
 module.exports = router

@@ -36,6 +36,16 @@ const edit = (req, res, next) => {
   res.status(201).json(data)
 }
 
+const deleteOne = (req, res, next) => {
+  let data = model.deleteOne(req.params.id)
+
+  if (data.errors) {
+    return next({ status: 400, message: `edit failed`, errors: data.errors })
+  }
+
+  res.status(200).json(data)
+}
+
 module.exports = {
-  getAll, getOne, create, edit
+  getAll, getOne, create, edit, deleteOne
 }
