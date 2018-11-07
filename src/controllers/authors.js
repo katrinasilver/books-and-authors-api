@@ -11,7 +11,7 @@ const getAuthor = (req, res, next) => {
 }
 
 const create = (req, res, next) => {
-  const data = model.create(req.body)
+  const data = model.create(req.params.id, req.body)
 
   if (data.errors) {
     return next({ status: 400, message: `post failed`, errors: data.errors })

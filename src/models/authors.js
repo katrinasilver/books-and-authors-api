@@ -1,5 +1,7 @@
 const uuid = require('uuid/v4')
 const authors = require('./data/authors')
+const fs = require('fs')
+// const path = require('path')
 const file = require('./filesync')
 
 const getAuthor = (id) => {
@@ -14,18 +16,26 @@ const getAuthor = (id) => {
   return author
 }
 
-const create = (body) => {
+const create = (id, body) => {
   const errors = []
   const { first_name, last_name } = body
+  const data = file.filesync('read', '/authors.json')
+  const books = file.filesync('read', '/books.json')
+  let book = books.find(b => b.id === id)
 
-  if (!body) {
+  if (!book) {
     errors.push(`author must have full name`)
     return { errors }
   } else {
     let author = {
       id: uuid(), first_name, last_name
     }
-    authors.push(author)
+
+    data.push(author)
+    book.authors.push(author.id)
+    file.filesync('write', '/authors.json', data)
+    file.filesync('write', '/books.json', books)
+
     return author
   }
 }
@@ -33,7 +43,7 @@ const create = (body) => {
 const edit = (id, body) => {
   const errors = []
   const { first_name, last_name } = body
-  let author = authors.find(a => a.id === authorid)
+  let author = authors.find(a => a.id === id)
 
   if (!body.first_name && !body.last_name) {
     errors.push(`author must have a first_name and last_name`)

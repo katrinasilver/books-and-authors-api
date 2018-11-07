@@ -1,50 +1,51 @@
 [
-  {
-    "id": "1",
-    "name": "A Game of Thrones",
-    "borrowed": "false",
-    "authors" : [
-      "1"
-    ]
-  },
-  {
-    "id": "2",
-    "name": "A Storm of Swords",
-    "borrowed": "false",
-    "authors": [
-      "1"
-    ]
-  },
-  {
-    "id": "3",
-    "name": "Stardust",
-    "borrowed": "false",
-    "authors": [
-      "3"
-    ]
-  },
-  {
-    "id": "4",
-    "title": "Coraline",
-    "borrowed": "false",
-    "authors": [
-      "3"
-    ]
-  },
-  {
-    "id": "5",
-    "name": "Harry Potter and the Half Blood Prince",
-    "borrowed": "false",
-    "authors": [
-      "2"
-    ]
-  },
-  {
-    "id": "6",
-    "name": "Harry Potter and the Deathly Hallows",
-    "borrowed": "false",
-    "authors": [
-      "2"
-    ]
-  }
+    {
+        "id": "1",
+        "name": "A Game of Thrones",
+        "borrowed": "false",
+        "authors": [
+            "1",
+            "d64cd496-3e6e-4f11-ab84-2391f597ca62"
+        ]
+    },
+    {
+        "id": "2",
+        "name": "A Storm of Swords",
+        "borrowed": "false",
+        "authors": [
+            "1"
+        ]
+    },
+    {
+        "id": "3",
+        "name": "Stardust",
+        "borrowed": "false",
+        "authors": [
+            "3"
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Coraline",
+        "borrowed": "false",
+        "authors": [
+            "3"
+        ]
+    },
+    {
+        "id": "5",
+        "name": "Harry Potter and the Half Blood Prince",
+        "borrowed": "false",
+        "authors": [
+            "2"
+        ]
+    },
+    {
+        "id": "6",
+        "name": "Harry Potter and the Deathly Hallows",
+        "borrowed": "false",
+        "authors": [
+            "2"
+        ]
+    }
 ]
