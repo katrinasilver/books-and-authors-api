@@ -1,9 +1,11 @@
 const uuid = require('uuid/v4')
 const authors = require('./data/authors')
+const file = require('./filesync')
 
 const getAuthor = (id) => {
   const errors = []
-  const author = authors.find(b => b.id === id)
+  const data = file.filesync('read', '/authors.json')
+  const author = data.find(a => a.id === id)
 
   if (!author) {
     errors.push(`author id doesn't exist`)
@@ -31,7 +33,7 @@ const create = (body) => {
 const edit = (id, body) => {
   const errors = []
   const { first_name, last_name } = body
-  let author = authors.find(b => b.id === id)
+  let author = authors.find(a => a.id === authorid)
 
   if (!body.first_name && !body.last_name) {
     errors.push(`author must have a first_name and last_name`)

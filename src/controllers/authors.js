@@ -1,7 +1,7 @@
 const model = require('../models/authors')
 
 const getAuthor = (req, res, next) => {
-  const data = model.getAuthor(req.params.id)
+  const data = model.getAuthor(req.params.authorid)
 
   if (data.errors) {
     return next({ status: 400, message: `author not found`, errors: data.errors })
