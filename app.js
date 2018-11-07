@@ -18,7 +18,7 @@ app.use((err, req, res, next) => {
 })
 
 // Route Errors
-app.use((req, res, next) => res.status(501).json({ error: { type: 501, message: `not implemented` } }))
+app.use((req, res, next) => res.status(501).json({ error: { type: 501, message: `route not implemented` } }))
 
 const listener = () => console.log(`Listening on port ${ port }!`)
 app.listen(port, listener)
