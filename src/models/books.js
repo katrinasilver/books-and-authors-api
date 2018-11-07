@@ -39,30 +39,44 @@ const edit = (id, body) => {
   const errors = []
   const { name, borrowed } = body
   let book = books.find(b => b.id === id)
-  let index = books.findIndex(b => b.id === id)
-  let entry
+  // let index = books.findIndex(b => b.id === id)
 
-  if (!name || name.length > 30) {
+  if (name && name.length > 30) {
     errors.push(`name is missing or exceeds 30 characters`)
-    entry = { errors }
+    return { errors }
 
   } else if (borrowed && (borrowed !== 'true' && borrowed !== 'false')) {
     errors.push(`borrowed: set to true or false`)
-    entry = { errors }
+    return { errors }
 
   } else if (!borrowed) {
     book.name = name
-    books.splice(index, 1, book)
-    entry = book
+    return book
+
+  } else if (!name) {
+    book.borrowed = borrowed
+    return book
 
   } else {
     book.borrowed = borrowed
     book.name = name
-    books.splice(index, 1, book)
-    entry = book
+    return book
   }
-  return entry
 }
+
+// const deleteOne = (id) => {
+//   const errors = []
+//   let book = books.find(b => b.id === id)
+//   let index = books.findIndex(b => b.id === id)
+
+//   if (!book) {
+//     errors.push(`book id doesn't exist`)
+//     return { errors }
+//   }
+
+//   books.splice(index, 1)
+//   return books
+// }
 
 module.exports = {
   getAll, getOne, create, edit
