@@ -16,6 +16,29 @@ const getOne = (id) => {
   return bid
 }
 
+const create = (body) => {
+  const errors = []
+  // const { id: uuid(), title, borrowed, description, authors: [uuid()] } = body
+
+  // read
+  // parse
+  // write
+  // do your thing
+  // stringify
+  // push
+
+  let entry
+  if (!entry) {
+    errors.push(`book id is required`)
+    return { errors }
+  } else {
+    books.push( body )
+    entry = body
+  }
+
+  return entry
+}
+
 module.exports = {
-  getAll, getOne
+  getAll, getOne, create
 }

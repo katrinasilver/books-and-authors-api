@@ -18,6 +18,17 @@ const getOne = (req, res, next) => {
   res.status(200).json({ data: result })
 }
 
+// Create a book
+const create = (req, res, next) => {
+  const result = model.create(req.body)
+
+  if (result.errors) {
+    return next({ status: 400, message: `Book not found`, errors: result.errors })
+  }
+
+  res.status(200).json({ data: result })
+}
+
 module.exports = {
-  getAll, getOne
+  getAll, getOne, create
 }
