@@ -27,10 +27,6 @@ const create = (body) => {
     errors.push(`name exceeds 30 characters`)
     entry = { errors }
 
-  // } else if (borrowed !== 'true' && borrowed !== 'false') {
-  //   errors.push(`borrowed: use true or false`)
-  //   entry = { errors }
-
   } else {
     const book = { id: uuid(), name,  borrowed: 'false', authors: [] }
     books.push(book)
@@ -44,29 +40,22 @@ const edit = (id, body) => {
   const { name, borrowed } = body
   let book = books.find(b => b.id === id)
   let index = books.findIndex(b => b.id === id)
-  console.log(book, index)
   let entry
 
-  if (name) {
+  if (!name || name.length > 30) {
+    errors.push(`name is missing or exceeds 30 characters`)
+    entry = { errors }
 
-    if (name.length > 30) {
-      errors.push(`name is missing or exceeds 30 characters`)
-      entry = { errors }
-    }
+  } else if (borrowed !== 'true' && borrowed !== 'false') {
+    errors.push(`borrowed: set to true or false`)
+    entry = { errors }
+
+  } else {
+    book.borrowed = borrowed
     book.name = name
     books.splice(index, 1, book)
     entry = book
-  }
 
-  if (borrowed) {
-
-    if (borrowed !== "true" && borrowed !== "false") {
-      errors.push(`borrowed: true or false`)
-      entry = { errors }
-    }
-    book.borrowed = borrowed
-    books.splice(index, 1, book)
-    entry = book
   }
   return entry
 }
