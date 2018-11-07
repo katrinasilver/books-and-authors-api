@@ -46,16 +46,20 @@ const edit = (id, body) => {
     errors.push(`name is missing or exceeds 30 characters`)
     entry = { errors }
 
-  } else if (borrowed !== 'true' && borrowed !== 'false') {
+  } else if (borrowed && (borrowed !== 'true' && borrowed !== 'false')) {
     errors.push(`borrowed: set to true or false`)
     entry = { errors }
+
+  } else if (!borrowed) {
+    book.name = name
+    books.splice(index, 1, book)
+    entry = book
 
   } else {
     book.borrowed = borrowed
     book.name = name
     books.splice(index, 1, book)
     entry = book
-
   }
   return entry
 }
