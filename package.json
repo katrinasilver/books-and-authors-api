@@ -2,7 +2,7 @@
   "name": "books-authors-api",
   "version": "1.0.0",
   "description": "An API using MVC architecture and RESTful patterns that stores information about Books and Authors",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "dev": "nodemon app.js",
     "start": "node app.js"
