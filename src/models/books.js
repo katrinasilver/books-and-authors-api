@@ -1,8 +1,12 @@
-const uuid = require('uuid/v4')
+const shortid = require('short-id')
+const file = require('./filesync')
 const books = require('./data/books')
+
+shortid.configure({ length: 10 })
 
 const getAll = (limit) => {
   const errors = []
+  const books = file.filesync('read', '/books.json')
 
   if (!books.length) {
     errors.push(`there are no books in the database right now :(`)
@@ -13,6 +17,7 @@ const getAll = (limit) => {
 
 const getOne = (id) => {
   const errors = []
+  const books = file.filesync('read', '/books.json')
   const book = books.find(b => b.id === id)
 
   if (!book) {
@@ -25,6 +30,7 @@ const getOne = (id) => {
 const create = (body) => {
   const errors = []
   const name = body.name
+  const books = file.filesync('read', '/books.json')
 
   if (!name) {
     errors.push(`book name is missing.`)
@@ -36,8 +42,11 @@ const create = (body) => {
 
   } else {
     const book = {
-      id: uuid(), name, borrowed: 'false', authors: [] }
+      id: shortid.generate(), name, borrowed: 'false', authors: [] }
+
     books.push(book)
+    file.filesync('write', '/books.json', books)
+
     return book
 
   }
@@ -46,6 +55,7 @@ const create = (body) => {
 const edit = (id, body) => {
   const errors = []
   const { name, borrowed } = body
+  const books = file.filesync('read', '/books.json')
   let book = books.find(b => b.id === id)
 
   if (name && name.length > 30) {
@@ -58,21 +68,28 @@ const edit = (id, body) => {
 
   } else if (!borrowed) {
     book.name = name
+    file.filesync('write', '/books.json', books)
+
     return book
 
   } else if (!name) {
     book.borrowed = borrowed
+    file.filesync('write', '/books.json', books)
+
     return book
 
   } else {
     book.borrowed = borrowed
     book.name = name
+    file.filesync('write', '/books.json', books)
+
     return book
   }
 }
 
 const deleteOne = (id) => {
   const errors = []
+  const books = file.filesync('read', '/books.json')
   let book = books.find(b => b.id === id)
   let index = books.findIndex(b => b.id === id)
 
@@ -82,6 +99,8 @@ const deleteOne = (id) => {
   }
 
   books.splice(index, 1)
+  file.filesync('write', '/books.json', books)
+
   return books
 }
 
