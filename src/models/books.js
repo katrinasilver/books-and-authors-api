@@ -2,8 +2,6 @@ const shortid = require('shortid')
 const file = require('./filesync')
 const books = require('./data/books')
 
-shortid.configure({ length: 10 })
-
 const getAll = (limit) => {
   const errors = []
   const books = file.filesync('read', '/books.json')
