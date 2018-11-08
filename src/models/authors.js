@@ -1,8 +1,7 @@
-const shortid = require('short-id')
+const shortid = require('shortid')
 const file = require('./filesync')
 const authors = require('./data/authors')
 
-shortid.configure({ length: 10 })
 
 const getAuthor = (id) => {
   const errors = []

@@ -1,4 +1,4 @@
-const shortid = require('short-id')
+const shortid = require('shortid')
 const file = require('./filesync')
 const books = require('./data/books')
 
