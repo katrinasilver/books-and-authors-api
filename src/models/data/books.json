@@ -4,7 +4,15 @@
         "name": "The Chronicles of Narnia",
         "borrowed": "false",
         "authors": [
-            "173e7cf78c"
+            "3c407ee628"
+        ]
+    },
+    {
+        "id": "20e90e2f49",
+        "name": "Odd Thomas",
+        "borrowed": "true",
+        "authors": [
+            "ec979b38ce"
         ]
     }
 ]

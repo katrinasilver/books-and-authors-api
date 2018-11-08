@@ -21,8 +21,7 @@ const create = (id, body) => {
   const { first_name, last_name } = body
   const authors = file.filesync('read', '/authors.json')
   const books = file.filesync('read', '/books.json')
-  let book = books.find(b => b.id === id)
-
+  const book = books.find(b => b.id === id)
 
   if (!book) {
     errors.push(`book doesn't exist`)
@@ -41,7 +40,7 @@ const create = (id, body) => {
     file.filesync('write', '/authors.json', authors)
     file.filesync('write', '/books.json', books)
 
-    return author
+    return book
   }
 
 }

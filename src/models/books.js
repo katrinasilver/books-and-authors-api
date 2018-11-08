@@ -41,14 +41,13 @@ const create = (body) => {
     return { errors }
 
   } else {
-    const book = {
+    let book = {
       id: shortid.generate(), name, borrowed: 'false', authors: [] }
 
     books.push(book)
     file.filesync('write', '/books.json', books)
 
     return book
-
   }
 }
 
@@ -56,7 +55,7 @@ const edit = (id, body) => {
   const errors = []
   const { name, borrowed } = body
   const books = file.filesync('read', '/books.json')
-  let book = books.find(b => b.id === id)
+  const book = books.find(b => b.id === id)
 
   if (name && name.length > 30) {
     errors.push(`name is missing or exceeds 30 characters`)
@@ -90,8 +89,8 @@ const edit = (id, body) => {
 const deleteOne = (id) => {
   const errors = []
   const books = file.filesync('read', '/books.json')
-  let book = books.find(b => b.id === id)
-  let index = books.findIndex(b => b.id === id)
+  const book = books.find(b => b.id === id)
+  const index = books.findIndex(b => b.id === id)
 
   if (!book) {
     errors.push(`book id doesn't exist`)

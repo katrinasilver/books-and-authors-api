@@ -1,27 +1,12 @@
 [
     {
-        "id": "1",
-        "first_name": "George",
-        "last_name": "R.R. Martin"
+        "id": "ec979b38ce",
+        "first_name": "Dean",
+        "last_name": "Koontz"
     },
     {
-        "id": "lemon-23a009973c",
-        "first_name": "Lulu",
-        "last_name": "Lemonade"
-    },
-    {
-        "id": "candyman-44ad09b1a1",
-        "first_name": "Mr.",
-        "last_name": "CandyMan"
-    },
-    {
-        "id": "a701a565dc",
-        "first_name": "Mr.",
-        "last_name": "CandyMan"
-    },
-    {
-        "id": "173e7cf78c",
-        "first_name": "C.S.",
+        "id": "3c407ee628",
+        "first_name": "CS",
         "last_name": "Lewis"
     }
 ]

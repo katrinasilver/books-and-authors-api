@@ -21,7 +21,7 @@ const create = (req, res, next) => {
 }
 
 const edit = (req, res, next) => {
-  let data = model.edit(req.params.authorid, req.body)
+  const data = model.edit(req.params.authorid, req.body)
 
   if (data.errors) {
     return next({ status: 400, message: `edit author failed`, errors: data.errors })
@@ -31,7 +31,7 @@ const edit = (req, res, next) => {
 }
 
 const deleteOne = (req, res, next) => {
-  let data = model.deleteOne(req.params.id, req.params.authorid)
+  const data = model.deleteOne(req.params.id, req.params.authorid)
 
   if (data.errors) {
     return next({ status: 400, message: `delete author failed`, errors: data.errors })
